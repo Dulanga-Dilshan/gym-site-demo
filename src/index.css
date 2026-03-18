@@ -1,69 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
 }
 
 h1,
@@ -71,6 +59,22 @@ h2 {
   font-family: var(--heading);
   font-weight: 500;
   color: var(--text-h);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--sans);
+}
+
+#root {
+  min-height: 100dvh;
 }
 
 h1 {
@@ -108,4 +112,77 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+/* Custom utility classes for better code quality */
+.link-secondary {
+  @apply text-gray-400 hover:text-[#D4A520] transition-colors;
+}
+
+.btn-primary {
+  @apply bg-[#D4A520] hover:bg-[#B8860B] text-white;
+}
+
+.btn-outline {
+  @apply border-2 border-white text-white hover:bg-white hover:text-gray-900 bg-transparent;
+}
+
+.text-primary {
+  @apply text-[#D4A520];
+}
+
+.bg-primary {
+  @apply bg-[#D4A520];
+}
+
+.hover-primary {
+  @apply hover:bg-[#D4A520];
+}
+
+.card-border {
+  @apply border-2;
+}
+
+.card-hover {
+  @apply hover:border-[#D4A520] transition-colors;
+}
+
+.social-btn {
+  @apply w-10 h-10 bg-gray-800 hover:bg-[#D4A520] rounded-full flex items-center justify-center transition-colors;
+}
+
+.nav-link {
+  @apply text-gray-700 hover:text-[#D4A520] transition-colors;
+}
+
+.mobile-nav-link {
+  @apply block w-full text-left py-2 text-gray-700 hover:text-[#D4A520] transition-colors;
+}
+
+.icon-bg {
+  @apply w-12 h-12 bg-[#D4A520] rounded-lg flex items-center justify-center;
+}
+
+.social-btn-alt {
+  @apply w-10 h-10 bg-gray-100 hover:bg-[#D4A520] rounded-full flex items-center justify-center transition-colors;
+}
+
+.service-icon {
+  @apply w-16 h-16 bg-[#D4A520] rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform;
+}
+
+.dot-primary {
+  @apply w-1.5 h-1.5 bg-[#D4A520] rounded-full mr-2;
+}
+
+.badge-primary {
+  @apply bg-[#D4A520] text-white px-4 py-1 rounded-full flex items-center gap-1 text-sm font-semibold;
+}
+
+.accent-bg {
+  @apply bg-[#D4A520] text-white;
+}
+
+.trainer-social-btn {
+  @apply w-10 h-10 bg-gray-100 hover:bg-[#D4A520] rounded-full flex items-center justify-center transition-colors;
 }
