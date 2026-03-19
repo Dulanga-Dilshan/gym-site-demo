@@ -1,28 +1,57 @@
+import { useState, useEffect } from 'react';
 import { Instagram, Linkedin, Mail } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
+interface Trainer {
+  name: string;
+  role: string;
+  image: string;
+  specialties: string[];
+}
+
 export function Trainers() {
-  const trainers = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Head Trainer & Yoga Specialist',
-      image: 'https://images.unsplash.com/photo-1708011108850-49646bd34503?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmZW1hbGUlMjBmaXRuZXNzJTIwdHJhaW5lcnxlbnwxfHx8fDE3NzM2NzMzNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      specialties: 'Yoga, Pilates, Wellness',
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Strength & Conditioning Coach',
-      image: 'https://images.unsplash.com/photo-1549995546-87cb41aa98a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWxlJTIwZml0bmVzcyUyMGNvYWNofGVufDF8fHx8MTc3MzY2NjA3M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      specialties: 'Weight Training, HIIT, Sports Performance',
-    },
-    {
-      name: 'Alex Martinez',
-      role: 'Cardio & Nutrition Expert',
-      image: 'https://images.unsplash.com/photo-1540205453279-389ebbc43b5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJzb25hbCUyMHRyYWluZXIlMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzczNjcxNTg3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      specialties: 'Cardio Training, Nutrition Planning, Fat Loss',
-    },
-  ];
+  const [trainers, setTrainers] = useState<Trainer[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchTrainers = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/get-trainers/');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch trainers: ${response.status}`);
+        }
+        const data = await response.json();
+        setTrainers(data.trainers);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTrainers();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="trainers" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-lg text-gray-600 dark:text-gray-400">Loading trainers...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="trainers" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-lg text-red-600 dark:text-red-400">⚠️ {error}</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="trainers" className="py-20 bg-gray-50 dark:bg-gray-800">

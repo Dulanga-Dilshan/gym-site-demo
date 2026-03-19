@@ -1,33 +1,56 @@
+import { useState, useEffect } from 'react';
 import { Dumbbell, Heart, Users, Zap } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 
 export function Services() {
-  const services = [
-    {
-      icon: Dumbbell,
-      title: 'Personal Training',
-      description: 'One-on-one sessions with certified trainers tailored to your specific goals and fitness level.',
-      features: ['Custom workout plans', 'Nutrition guidance', 'Progress tracking'],
-    },
-    {
-      icon: Heart,
-      title: 'Cardio Programs',
-      description: 'High-intensity cardio workouts designed to improve endurance and burn calories effectively.',
-      features: ['HIIT classes', 'Cycling sessions', 'Running programs'],
-    },
-    {
-      icon: Zap,
-      title: 'Strength Training',
-      description: 'Build muscle and increase strength with our comprehensive resistance training programs.',
-      features: ['Free weights', 'Machines', 'Functional training'],
-    },
-    {
-      icon: Users,
-      title: 'Group Classes',
-      description: 'Join energizing group sessions including yoga, pilates, spin, and more for all fitness levels.',
-      features: ['Yoga & Pilates', 'Spin classes', 'Bootcamp'],
-    },
-  ];
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const iconMap = {
+    Dumbbell,
+    Heart,
+    Zap,
+    Users,
+  };
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/get-services/');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch services: ${response.status}`);
+        }
+        const data = await response.json();
+        setServices(data.services);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchServices();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="services" className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-lg text-gray-600 dark:text-gray-400">Loading services...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="services" className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-lg text-red-600 dark:text-red-400">⚠️ {error}</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="services" className="py-20 bg-white dark:bg-gray-900">
@@ -45,7 +68,7 @@ export function Services() {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => {
-            const Icon = service.icon;
+            const Icon = iconMap[service.icon];
             return (
               <Card 
                 key={index}
@@ -54,7 +77,7 @@ export function Services() {
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <div className="service-icon">
-                      <Icon className="w-8 h-8 text-white" />
+                      {Icon && <Icon className="w-8 h-8 text-white" />}
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{service.title}</h3>

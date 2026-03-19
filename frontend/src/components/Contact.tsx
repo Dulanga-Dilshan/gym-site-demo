@@ -29,8 +29,13 @@ export function Contact() {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(errorText || `Request failed with status ${response.status}`);
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch {
+          errorData = { detail: await response.text() };
+        }
+        throw new Error(errorData.detail || errorData.message || `Request failed with status ${response.status}`);
       }
 
       setStatusMessage('✅ Thank you for your message! We will get back to you soon.');
@@ -39,7 +44,7 @@ export function Contact() {
       const isBackendRunning = "";
 
       setStatusMessage(
-        `⚠️ There was a problem sending your message. Please try again later.(backend error: ${error instanceof Error ? error.message : 'Unknown error'})`
+        `⚠️ ${error instanceof Error ? error.message : 'Unknown error'}`
       );
       console.error('Contact form submission error:', error);
     } finally {

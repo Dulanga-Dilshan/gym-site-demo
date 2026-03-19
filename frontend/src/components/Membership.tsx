@@ -1,9 +1,61 @@
+import { useState, useEffect } from 'react';
 import { Check, Star } from 'lucide-react';
 import { Card, CardContent, CardHeader } from './ui/card';
 import { Button } from './ui/button';
 
+interface Plan {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  popular: boolean;
+  features: string[];
+}
+
 export function Membership() {
-  const plans = [
+  const [plans, setPlans] = useState<Plan[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPlans = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/get-membership-plans/');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch membership plans: ${response.status}`);
+        }
+        const data = await response.json();
+        setPlans(data.plans);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPlans();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="membership" className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-lg text-gray-600 dark:text-gray-400">Loading membership plans...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="membership" className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-lg text-red-600 dark:text-red-400">⚠️ {error}</p>
+        </div>
+      </section>
+    );
+  }
+
+  const fallbackPlans: Plan[] = [
     {
       name: 'Basic',
       price: '$29',
@@ -48,6 +100,8 @@ export function Membership() {
     },
   ];
 
+  const displayPlans = plans.length > 0 ? plans : fallbackPlans;
+
   return (
     <section id="membership" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,7 +117,7 @@ export function Membership() {
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan, index) => (
+          {displayPlans.map((plan, index) => (
             <Card 
               key={index}
               className={`relative ${
