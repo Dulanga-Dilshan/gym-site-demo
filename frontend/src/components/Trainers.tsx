@@ -25,14 +25,14 @@ export function Trainers() {
   ];
 
   return (
-    <section id="trainers" className="py-20 bg-gray-50">
+    <section id="trainers" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Meet Our <span className="text-primary">Expert Trainers</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Our certified fitness professionals are dedicated to helping you achieve your goals with personalized guidance and support.
           </p>
         </div>
@@ -53,9 +53,9 @@ export function Trainers() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               </div>
               <CardContent className="p-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-1">{trainer.name}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{trainer.name}</h3>
                 <p className="text-primary font-semibold mb-3">{trainer.role}</p>
-                <p className="text-gray-600 mb-4">{trainer.specialties}</p>
+                <p className="text-gray-600 dark:text-white mb-4">{trainer.specialties}</p>
                 
                 {/* Social Links */}
                 <div className="flex gap-3">

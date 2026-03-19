@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from './ui/button';
+import { useTheme } from '../contexts/ThemeContext';
 
 import logo from '../assets/logo.jpg';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -16,7 +18,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-md z-50">
+    <nav className="fixed top-0 left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-md dark:shadow-gray-800 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -27,17 +29,20 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <button onClick={() => scrollToSection('hero')} className="nav-link">
+            <button onClick={() => scrollToSection('hero')} className="nav-link dark:text-white">
               Home
             </button>
-            <button onClick={() => scrollToSection('about')} className="nav-link">
+            <button onClick={() => scrollToSection('about')} className="nav-link dark:text-white">
               About
             </button>
-            <button onClick={() => scrollToSection('services')} className="nav-link">
+            <button onClick={() => scrollToSection('services')} className="nav-link dark:text-white">
               Services
             </button>
-            <button onClick={() => scrollToSection('contact')} className="nav-link">
+            <button onClick={() => scrollToSection('contact')} className="nav-link dark:text-white">
               Contact
+            </button>
+            <button onClick={toggleTheme} className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+              {theme === 'dark' ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-600" />}
             </button>
             <Button 
               onClick={() => scrollToSection('membership')} 
@@ -59,31 +64,34 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t">
+        <div className="md:hidden bg-white dark:bg-gray-900 border-t">
           <div className="px-4 py-4 space-y-3">
             <button 
               onClick={() => scrollToSection('hero')} 
-              className="mobile-nav-link"
+              className="mobile-nav-link dark:text-white"
             >
               Home
             </button>
             <button 
               onClick={() => scrollToSection('about')} 
-              className="mobile-nav-link"
+              className="mobile-nav-link dark:text-white"
             >
               About
             </button>
             <button 
               onClick={() => scrollToSection('services')} 
-              className="mobile-nav-link"
+              className="mobile-nav-link dark:text-white"
             >
               Services
             </button>
             <button 
               onClick={() => scrollToSection('contact')} 
-              className="mobile-nav-link"
+              className="mobile-nav-link dark:text-white"
             >
               Contact
+            </button>
+            <button onClick={toggleTheme} className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+              {theme === 'dark' ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-600" />}
             </button>
             <Button 
               onClick={() => scrollToSection('membership')} 

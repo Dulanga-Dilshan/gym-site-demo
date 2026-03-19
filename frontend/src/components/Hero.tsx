@@ -11,7 +11,7 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900 dark:bg-gray-900">
       {/* Background Image */}
       <div className="absolute inset-0">
         <ImageWithFallback
@@ -19,7 +19,7 @@ export function Hero() {
           alt="Fitness gym hero"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 dark:from-black/80 dark:via-black/60 dark:to-black/40"></div>
       </div>
 
       {/* Content */}
@@ -30,7 +30,7 @@ export function Hero() {
             Transform Your Life
           </span>
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+        <p className="text-lg sm:text-xl md:text-2xl text-gray-200 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
           Join the ultimate fitness experience with world-class trainers, state-of-the-art equipment, and a community that supports your goals.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

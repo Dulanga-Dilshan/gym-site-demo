@@ -26,7 +26,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Image */}
@@ -46,13 +46,13 @@ export function About() {
 
           {/* Content */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               About <span className="text-primary">Fitness Sports Center</span>
             </h2>
-            <p className="text-lg text-gray-700 mb-6">
+            <p className="text-lg text-gray-700 dark:text-white mb-6">
               Welcome to Fitness Sports Center, where fitness meets passion. For over a decade, we've been dedicated to helping individuals transform their lives through health and wellness.
             </p>
-            <p className="text-lg text-gray-700 mb-8">
+            <p className="text-lg text-gray-700 dark:text-white mb-8">
               Our state-of-the-art facility, combined with expert trainers and a supportive community, creates the perfect environment for you to reach your fitness goals.
             </p>
 
@@ -68,8 +68,8 @@ export function About() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">{value.title}</h3>
-                      <p className="text-sm text-gray-600">{value.description}</p>
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{value.title}</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">{value.description}</p>
                     </div>
                   </div>
                 );

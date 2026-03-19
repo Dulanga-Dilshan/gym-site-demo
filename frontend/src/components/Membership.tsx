@@ -49,14 +49,14 @@ export function Membership() {
   ];
 
   return (
-    <section id="membership" className="py-20 bg-white">
+    <section id="membership" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Membership <span className="text-primary">Plans</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Choose the plan that fits your lifestyle and goals. All plans include access to our world-class facilities.
           </p>
         </div>
@@ -82,11 +82,11 @@ export function Membership() {
               )}
 
               <CardHeader className="text-center pb-8 pt-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                <p className="text-gray-600 text-sm mb-4">{plan.description}</p>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{plan.name}</h3>
+                <p className="text-gray-600 dark:text-white text-sm mb-4">{plan.description}</p>
                 <div className="flex items-baseline justify-center">
-                  <span className="text-5xl font-bold text-gray-900">{plan.price}</span>
-                  <span className="text-gray-600 ml-2">{plan.period}</span>
+                  <span className="text-5xl font-bold text-gray-900 dark:text-white">{plan.price}</span>
+                  <span className="text-gray-600 dark:text-white ml-2">{plan.period}</span>
                 </div>
               </CardHeader>
 
@@ -97,7 +97,7 @@ export function Membership() {
                       <div className="flex-shrink-0 w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mt-0.5">
                         <Check className="w-3 h-3 text-green-600" />
                       </div>
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-gray-700 dark:text-white">{feature}</span>
                     </li>
                   ))}
                 </ul>

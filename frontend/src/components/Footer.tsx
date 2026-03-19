@@ -12,7 +12,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 dark:bg-gray-950 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
@@ -21,7 +21,7 @@ export function Footer() {
               <img src={logo} alt="FitPro logo" className="h-14 w-auto" />
               <h2 className="text-2xl font-bold text-primary">FitPro</h2>
             </div>
-            <p className="text-gray-400 mb-6 max-w-md">
+            <p className="text-gray-400 dark:text-gray-500 mb-6 max-w-md">
               Transform your body and mind at FitPro. Join our community of fitness enthusiasts and start your journey to a healthier, stronger you.
             </p>
             <div className="flex gap-4">
