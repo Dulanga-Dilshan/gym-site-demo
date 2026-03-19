@@ -33,6 +33,17 @@ Design prototype available on Figma: [Gym Site Demo Design](https://www.figma.co
 
 ---
 
+## 🧩 API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/contact/` | POST | Submit contact form messages |
+| `/api/get-services/` | GET | Fetch all available gym services |
+| `/api/get-trainers/` | GET | Fetch all trainers information |
+| `/api/get-membership-plans/` | GET | Fetch all membership plans |
+
+---
+
 ## ⚙️ Setup / Installation
 
 ### 1. Clone the repository
@@ -128,4 +139,10 @@ gym-site-demo/
 └── db.sqlite3              # optional local database
 ```
 
----
+
+
+## 📫 Contact
+
+For questions or feedback, contact: **Dulanga Dilshan**  
+GitHub: [https://github.com/Dulanga-Dilshan](https://github.com/Dulanga-Dilshan/)
+
