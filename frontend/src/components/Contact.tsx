@@ -16,7 +16,6 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your message! We will get back to you soon');
     setIsSubmitting(true);
     setStatusMessage(null);
 
