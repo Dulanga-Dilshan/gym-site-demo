@@ -20,7 +20,7 @@ export function Membership() {
   useEffect(() => {
     const fetchPlans = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/get-membership-plans/');
+        const response = await fetch('/api/get-membership-plans/');
         if (!response.ok) {
           throw new Error(`Failed to fetch membership plans: ${response.status}`);
         }

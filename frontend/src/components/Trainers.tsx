@@ -18,7 +18,7 @@ export function Trainers() {
   useEffect(() => {
     const fetchTrainers = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/get-trainers/');
+        const response = await fetch('/api/get-trainers/');
         if (!response.ok) {
           throw new Error(`Failed to fetch trainers: ${response.status}`);
         }

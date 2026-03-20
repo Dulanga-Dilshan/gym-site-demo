@@ -89,8 +89,6 @@ python manage.py collectstatic --noinput
 ---
 
 ### 3. Frontend Setup (React)
-go to frontend/src/components/
-edit contact.tsx, membership.tsx, services.tsx, trainers.tsx replace ip address 127.0.0.1:8000 with your server's public ip address
 
 ```bash
 cd ../frontend
