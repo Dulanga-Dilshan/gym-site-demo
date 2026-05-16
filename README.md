@@ -4,12 +4,6 @@ A full-stack web application for managing gym services, memberships, and contact
 
 ---
 
-## 🌐 Live Demo
-
-Check out the live demo here: [http://13.212.234.227/](http://13.212.234.227/)
-
----
-
 ## 🎨 Figma Design
 
 Design prototype available on Figma: [Gym Site Demo Design](https://www.figma.com/design/VijXwbNGkNiPopD6LX3WJX/gym-site-demo?node-id=0-1&p=f&t=vTPno0wHJ2wYQJiM-0)
