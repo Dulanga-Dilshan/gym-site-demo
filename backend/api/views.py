@@ -10,8 +10,15 @@ from api.serializers import ContactMessageSerializer
 
 @api_view(['POST'])
 def contact(request):
+    if 'name' not in request.data or 'email' not in request.data or 'message' not in request.data:
+        return Response({'message': 'missing requered filds'},status=status.HTTP_400_BAD_REQUEST)   
+    
+    name = request.data['name']
+    email = request.data['email']
+    message = request.data['message']     
+
     try:
-        serializered_message=ContactMessageSerializer(services.create_contact_message(request.data['name'],request.data['email'],request.data['message']))
+        serializered_message=ContactMessageSerializer(services.create_contact_message(name,email,message))
 
     except ValidationError as e:
         return Response({'message': 'error submiting form','detail':e.message},status=status.HTTP_400_BAD_REQUEST)
