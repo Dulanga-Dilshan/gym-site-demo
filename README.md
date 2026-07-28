@@ -4,12 +4,6 @@ A full-stack web application for managing gym services, memberships, and contact
 
 ---
 
-## 🎨 Figma Design
-
-Design prototype available on Figma: [Gym Site Demo Design](https://www.figma.com/design/VijXwbNGkNiPopD6LX3WJX/gym-site-demo?node-id=0-1&p=f&t=vTPno0wHJ2wYQJiM-0)
-
----
-
 ## 🛠 Features
 
 - **Frontend (React + Vite)**
@@ -39,6 +33,60 @@ Design prototype available on Figma: [Gym Site Demo Design](https://www.figma.co
 ---
 
 ## ⚙️ Setup / Installation
+
+### Option 1: Docker (Recommended)
+
+The project includes Docker configuration for easy setup and deployment.
+
+#### Prerequisites
+- Docker and Docker Compose installed on your system
+- AWS EC2 instance (for production deployment)
+
+#### Steps
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/Dulanga-Dilshan/gym-site-demo.git
+cd gym-site-demo
+```
+
+2. **Configure environment variables**
+   Copy the example environment file and update with your values
+```bash
+cp example.env .env
+```
+Edit .env file with your configuration
+**Example `.env` file:**
+
+```env
+DJANGO_SECRET_KEY=YOUR_SECRET_KEY
+DEBUG=False
+ALLOWED_HOSTS=YOUR_SERVER_IP,localhost,YOUR_DOMAIN
+CORS_ALLOWED_ORIGINS=http://YOUR_SERVER_IP,http://localhost:5173,https://YOUR_DOMAIN
+DJANGO_SUPERUSER_USERNAME=YOUR_USERNAME
+DJANGO_SUPERUSER_EMAIL=YOUR_EMAIL@example.com
+DJANGO_SUPERUSER_PASSWORD=YOUR_PASSWORD
+POSTGRES_DB=YOUR_DATABASE_NAME
+POSTGRES_USER=YOUR_DATABASE_USER
+POSTGRES_PASSWORD=YOUR_DATABASE_PASSWORD
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
+```
+
+3 ***Build and run with Docker Compose***
+
+```bash
+docker-compose up -d --build
+```
+**This will:***
+  -Build the React frontend
+  -Build the Django backend
+  -Set up Nginx as a reverse proxy
+  -Start all services in detached mode
+
+
+### Option 2: Manual Setup
 
 ### 1. Clone the repository
 
