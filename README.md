@@ -79,12 +79,12 @@ POSTGRES_PORT=5432
 ```bash
 docker-compose up -d --build
 ```
-**This will:***
-  -Build the React frontend
-  -Build the Django backend
-  -Set up Nginx as a reverse proxy
-  -Start all services in detached mode
 
+- **This will:**
+  - Build the React frontend
+  - Build the Django backend
+  - Set up Nginx as a reverse proxy
+  - Start all services in detached mode
 
 ### Option 2: Manual Setup
 
