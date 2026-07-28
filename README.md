@@ -126,8 +126,6 @@ Collect static files:
 python manage.py collectstatic --noinput
 ```
 
----
-
 ### 3. Frontend Setup (React)
 
 ```bash
@@ -138,7 +136,6 @@ npm run build
 
 - The build will generate a `dist/` folder ready for deployment.
 
----
 
 ### 4. Deployment (Linux / Ubuntu)
 
@@ -170,19 +167,16 @@ gym-site-demo/
 │   ├── base/               # Core app logic
 │   ├── env/                # Python virtual environment (ignored)
 │   ├── manage.py
+│   ├── Dockerfile
 │   └── requirements.txt
 ├── frontend/
 │   ├── src/                # React source code
 │   ├── public/
 │   ├── package.json
+│   ├── Dockerfile
 │   └── vite.config.js
+├── nginx/                  # Nginx Config
+│   └── default.conf
+├── compose.yaml            # Docker Compose file
 └── db.sqlite3              # optional local database
 ```
-
-
-
-## 📫 Contact
-
-For questions or feedback, contact: **Dulanga Dilshan**  
-GitHub: [https://github.com/Dulanga-Dilshan](https://github.com/Dulanga-Dilshan/)
-
