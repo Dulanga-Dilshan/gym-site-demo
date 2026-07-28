@@ -95,8 +95,6 @@ git clone https://github.com/Dulanga-Dilshan/gym-site-demo.git
 cd gym-site-demo
 ```
 
----
-
 ### 2. Backend Setup (Django)
 
 ```bash
